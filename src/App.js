@@ -1,14 +1,14 @@
 import React, { useState, Fragment } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Header from "./Components/Header";
-import Search from "./Components/Search";
+import Header from "./Components/Header/Header";
+import Search from "./Components/Search/Search";
 import data from "./Models/books.json";
-import BookList from "./Components/BookList";
+import BookList from "./Components/Booklist/BookList";
 import About from "./Pages/About";
-import Bookcase from "./Components/Bookcase";
-import Pagination from "./Components/Pagination";
-import { Layout } from "./Components/Layout";
-import NavBar from "./Components/NavBar";
+import Bookcase from "./Components/Bookcase/Bookcase";
+import Pagination from "./Components/Pagination/Pagination";
+import { Layout } from "./Components/Layout/Layout";
+import NavBar from "./Components/Navbar/NavBar";
 
 const App = (props) => {
   const [books, setBooks] = useState(data);
