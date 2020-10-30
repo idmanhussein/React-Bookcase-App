@@ -95,7 +95,6 @@ const App = (props) => {
             render={() => (
               <Fragment>
                 <NavBar />
-                <Header />
                 <About />
               </Fragment>
             )}

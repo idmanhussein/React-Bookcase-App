@@ -1,23 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Form } from "react-bootstrap";
 
-const Search = (props) => {
-  const [keyword, setKeyword] = useState("");
+const Search = ({ keyword, findBooks, setKeyword }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.findBooks(props.keyword);
+    findBooks(keyword);
   };
 
   return (
     <div>
       <Form onSubmit={(e) => handleSubmit(e)}>
-        <h1>{keyword && "Searching for keyword: " + keyword}</h1>
-        <input
-          type="text"
-          value={props.keyword}
-          onChange={(e) => props.setKeyword(e.target.value)}
-        />
-        <input type="submit" value="Find" />
+        <Form.Group controlId="searchKeyword">
+          <Form.Label>Find your latest read!</Form.Label>
+          <Form.Control
+            className="mr-sm-1 text-center"
+            type="text"
+            placeholder="Enter keyword"
+            value={keyword}
+            onChange={(e) => setKeyword(e.target.value)}
+          />
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          Find
+        </Button>
       </Form>
     </div>
   );
