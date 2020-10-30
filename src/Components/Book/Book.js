@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Book = (props) => {
+const Book = ({ book, addBookToBookcase }) => {
   const {
     volumeInfo: {
       title,
@@ -9,14 +9,14 @@ const Book = (props) => {
       description,
       imageLinks: { thumbnail },
     },
-  } = props.book;
+  } = book;
   const renderAmount = () => {
     if (
-      props.book.saleInfo &&
-      props.book.saleInfo.listPrice &&
-      props.book.saleInfo.listPrice.amount
+      book.saleInfo &&
+      book.saleInfo.listPrice &&
+      book.saleInfo.listPrice.amount
     ) {
-      return "£" + props.book.saleInfo.listPrice.amount;
+      return "£" + book.saleInfo.listPrice.amount;
     }
     return "No price available";
   };
@@ -29,7 +29,7 @@ const Book = (props) => {
       <p>{renderAmount()}</p>
       <p>{description}</p>
       <div>
-        <button onClick={() => props.addBookToBookcase(title)}>Add</button>
+        <button onClick={() => addBookToBookcase(title)}>Add</button>
       </div>
     </div>
   );
