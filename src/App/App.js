@@ -9,6 +9,7 @@ import Bookcase from "../Components/Bookcase/Bookcase";
 import Pagination from "../Components/Pagination/Pagination";
 import { Layout } from "../Components/Layout/Layout";
 import NavBar from "../Components/Navbar/NavBar";
+import { Typography } from "@material-ui/core";
 
 const App = (props) => {
   const [books, setBooks] = useState(data);
@@ -62,73 +63,75 @@ const App = (props) => {
   return (
     <BrowserRouter>
       <Layout>
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={() => (
-              <Fragment>
-                <NavBar />
-                <Header bookcase={bookcase.length} />
-                <Search
-                  findBooks={findBooks}
-                  keyword={keyword}
-                  setKeyword={setKeyword}
-                />
-                <BookList
-                  books={currentBooks}
-                  addBookToBookcase={addBookToBookcase}
-                  stored="library"
-                />
-                <Pagination
-                  booksPerPage={booksPerPage}
-                  totalBooks={books.length}
-                  paginate={paginate}
-                />
-              </Fragment>
-            )}
-          />
+        <Typography>
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={() => (
+                <Fragment>
+                  <NavBar />
+                  <Header bookcase={bookcase.length} />
+                  <Search
+                    findBooks={findBooks}
+                    keyword={keyword}
+                    setKeyword={setKeyword}
+                  />
+                  <BookList
+                    books={currentBooks}
+                    addBookToBookcase={addBookToBookcase}
+                    stored="library"
+                  />
+                  <Pagination
+                    booksPerPage={booksPerPage}
+                    totalBooks={books.length}
+                    paginate={paginate}
+                  />
+                </Fragment>
+              )}
+            />
 
-          <Route
-            exact
-            path="/about"
-            render={() => (
-              <Fragment>
-                <NavBar />
-                <About />
-              </Fragment>
-            )}
-          />
+            <Route
+              exact
+              path="/about"
+              render={() => (
+                <Fragment>
+                  <NavBar />
+                  <About />
+                </Fragment>
+              )}
+            />
 
-          <Route
-            exact
-            path="/bookcase"
-            render={() => (
-              <Fragment>
-                <NavBar />
-                <Header />
-                <Bookcase bookcase={bookcase} removeBook={removeBook} />
-              </Fragment>
-            )}
-          />
+            <Route
+              exact
+              path="/bookcase"
+              render={() => (
+                <Fragment>
+                  <NavBar />
+                  <Header />
+                  <Bookcase bookcase={bookcase} removeBook={removeBook} />
+                </Fragment>
+              )}
+            />
 
-          <Route
-            exact
-            path="/search"
-            render={() => (
-              <Fragment>
-                <NavBar />
-                <Header />
-                <Search
-                  findBooks={findBooks}
-                  keyword={keyword}
-                  setKeyword={setKeyword}
-                />
-                <Bookcase bookcase={bookcase} removeBook={removeBook} />
-              </Fragment>
-            )}
-          />
-        </Switch>
+            <Route
+              exact
+              path="/search"
+              render={() => (
+                <Fragment>
+                  <NavBar />
+                  <Header />
+                  <Search
+                    findBooks={findBooks}
+                    keyword={keyword}
+                    setKeyword={setKeyword}
+                  />
+                  <Bookcase bookcase={bookcase} removeBook={removeBook} />
+                </Fragment>
+              )}
+            />
+          </Switch>
+        </Typography>
       </Layout>
     </BrowserRouter>
   );
