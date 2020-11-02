@@ -1,5 +1,6 @@
 import React from "react";
-import { Button, Form } from "react-bootstrap";
+
+import { Button } from "@material-ui/core";
 
 const Search = ({ keyword, findBooks, setKeyword }) => {
   const handleSubmit = (event) => {
@@ -8,6 +9,23 @@ const Search = ({ keyword, findBooks, setKeyword }) => {
   };
 
   return (
+    <form onSubmit={(e) => handleSubmit(e)}>
+      <label>
+        Find your latest read!
+        <input
+          type="text"
+          value={keyword}
+          onChange={(e) => setKeyword(e.target.value)}
+        />
+      </label>
+      <Button color="secondary" variant="outlined" type="submit" value="Submit">
+        Find
+      </Button>
+    </form>
+  );
+};
+
+/* return (
     <div>
       <Form onSubmit={(e) => handleSubmit(e)}>
         <Form.Group controlId="searchKeyword">
@@ -27,5 +45,5 @@ const Search = ({ keyword, findBooks, setKeyword }) => {
     </div>
   );
 };
-
+*/
 export default Search;
