@@ -1,5 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Card from "@material-ui/core";
+import CardActions from "@material-ui/core";
+import CardContent from "@material-ui/core";
 
 const Book = ({ book, addBookToBookcase }) => {
   const {
@@ -24,12 +27,19 @@ const Book = ({ book, addBookToBookcase }) => {
   return (
     <div className="book-list">
       <img src={thumbnail} alt="bookImage" />
-      <h2>{title}</h2>
-      <h3>{authors.length === 1 ? authors[0] : authors.join(", ")}</h3>
-      <p>{renderAmount()}</p>
-      <p>{description}</p>
+      <h2 className="bookTitle">{title}</h2>
+      <h3 className="bookAuthor">
+        {authors.length === 1 ? authors[0] : authors.join(", ")}
+      </h3>
+      <p className="bookPrice">{renderAmount()}</p>
+      <p className="bookDescription">{description}</p>
       <div>
-        <button onClick={() => addBookToBookcase(title)}>Add</button>
+        <button
+          className="addBookButton"
+          onClick={() => addBookToBookcase(title)}
+        >
+          Add
+        </button>
       </div>
     </div>
   );
