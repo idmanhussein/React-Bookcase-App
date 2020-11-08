@@ -1,11 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import "./Header.css";
 
 const Header = () => {
   return (
-    <div>
-      <h1>My Bookcase</h1>
-    </div>
+    <h1 className="home-pg-title" align="center">
+      My Library
+    </h1>
   );
 };
 export default Header;

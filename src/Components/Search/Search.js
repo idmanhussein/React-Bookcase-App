@@ -1,6 +1,8 @@
-import React from "react";
-
-import { Button } from "@material-ui/core";
+import React, { useState, useEffect } from "react";
+import { MDBCol } from "mdbreact";
+import { Button, Typography } from "@material-ui/core";
+import { Divider } from "@material-ui/core";
+import SearchBar from "material-ui-search-bar";
 
 const Search = ({ keyword, findBooks, setKeyword }) => {
   const handleSubmit = (event) => {
@@ -9,19 +11,29 @@ const Search = ({ keyword, findBooks, setKeyword }) => {
   };
 
   return (
-    <form onSubmit={(e) => handleSubmit(e)}>
-      <label>
-        Find your latest read!
-        <input
+    <MDBCol md="12">
+      <form onSubmit={(e) => handleSubmit(e)}>
+        <Typography variant="h6" className="form-label" align="center">
+          Find your latest read!
+        </Typography>
+        <Divider variant="middle" />
+        <SearchBar
           type="text"
+          placeholder="Search"
           value={keyword}
-          onChange={(e) => setKeyword(e.target.value)}
+          onChange={(value) => setKeyword(value)}
         />
-      </label>
-      <Button color="secondary" variant="outlined" type="submit" value="Submit">
-        Find
-      </Button>
-    </form>
+
+        <Button
+          color="secondary"
+          variant="outlined"
+          type="submit"
+          value="Submit"
+        >
+          Find
+        </Button>
+      </form>
+    </MDBCol>
   );
 };
 

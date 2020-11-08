@@ -1,15 +1,21 @@
 import React from "react";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Col, Row } from "react-bootstrap";
+import "./Bookcase.css";
 
-const Bookcase = (props) => {
+const Bookcase = ({ bookcase, setBookcase }) => {
+  const removeBook = (book) =>
+    setBookcase(bookcase.filter((item) => item !== book));
+
   return (
     <>
-      {props.bookcase.map((item) => {
+      {bookcase.map((item) => {
         const price = () =>
           item.saleInfo.saleability === "FOR_SALE"
             ? "£" + item.saleInfo.listPrice.amount
             : "£0.00";
+
         return (
           <>
             <Row>
@@ -30,14 +36,14 @@ const Bookcase = (props) => {
                   src={item.volumeInfo.imageLinks.thumbnail}
                   alt="bookImages"
                 />
-                <h2 className="mt-5 ml-5">{price()}</h2>
+                <h6 className="mt-5 ml-5">{price()}</h6>
 
                 <Button
                   variant="danger"
                   className="mt-5 ml-5"
-                  onClick={() => props.removeBook(item.volumeInfo.title)}
+                  onClick={() => removeBook(item)}
                 >
-                  remove
+                  Remove
                 </Button>
               </Col>
             </Row>

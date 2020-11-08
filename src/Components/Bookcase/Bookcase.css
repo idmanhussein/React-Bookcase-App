@@ -1,0 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap");
+
+.bookcase-title {
+  font-family: "Patrick Hand", cursive;
+  font-weight: 400;
+  font-size: 50px;
+  text-align: center;
+}
+
+.description {
+  text-align: justify;
+}

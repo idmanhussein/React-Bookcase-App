@@ -1,10 +1,10 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Header from "../Components/Header/Header";
 import Search from "../Components/Search/Search";
 import data from "../Models/books.json";
 import BookList from "../Components/Booklist/BookList";
-import About from "../Pages/About";
+import About from "../Pages/About/About";
 import Bookcase from "../Components/Bookcase/Bookcase";
 import Pagination from "../Components/Pagination/Pagination";
 import { Layout } from "../Components/Layout/Layout";
@@ -13,11 +13,11 @@ import { Typography } from "@material-ui/core";
 
 const App = (props) => {
   const [books, setBooks] = useState(data);
+  localStorage.getItem("books");
   const [keyword, setKeyword] = useState("");
   const [bookcase, setBookcase] = useState([]);
-
   const [currentPage, setCurrentPage] = useState([1]);
-  const [booksPerPage] = useState(5);
+  const [booksPerPage] = useState(6);
 
   /* useEffect(() => {
     const findBooks = async (value) => {
@@ -45,13 +45,6 @@ const App = (props) => {
   function addBookToBookcase(title) {
     let findBooks = books.filter((book) => title === book.volumeInfo.title);
     setBookcase((existingBook) => existingBook.concat(findBooks));
-  }
-
-  function removeBook(title) {
-    const newBooks = books.filter((book) => {
-      return title !== book.volumeInfo.title;
-    });
-    setBooks(newBooks);
   }
 
   // Get current books
@@ -96,7 +89,7 @@ const App = (props) => {
               path="/about"
               render={() => (
                 <Fragment>
-                  <NavBar />
+                  <NavBar bookcase={bookcase.length} />
                   <About />
                 </Fragment>
               )}
@@ -108,8 +101,8 @@ const App = (props) => {
               render={() => (
                 <Fragment>
                   <NavBar />
-                  <Header />
-                  <Bookcase bookcase={bookcase} removeBook={removeBook} />
+                  <h1 className="bookcase-title">My Bookcase</h1>
+                  <Bookcase bookcase={bookcase} setBookcase={setBookcase} />
                 </Fragment>
               )}
             />
@@ -126,7 +119,7 @@ const App = (props) => {
                     keyword={keyword}
                     setKeyword={setKeyword}
                   />
-                  <Bookcase bookcase={bookcase} removeBook={removeBook} />
+                  <Bookcase bookcase={bookcase} />
                 </Fragment>
               )}
             />

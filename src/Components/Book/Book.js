@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
-import { Button } from "@material-ui/core";
 import clsx from "clsx";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -9,17 +8,15 @@ import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import Collapse from "@material-ui/core/Collapse";
-import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import { red } from "@material-ui/core/colors";
 import BookIcon from "@material-ui/icons/Book";
-
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
-import { Grid } from "@material-ui/core";
+import { Grid, CardActionArea } from "@material-ui/core";
 import { Paper } from "@material-ui/core";
-
+import { Box } from "@material-ui/core";
+import "./Book.css";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -32,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
   media: {
     height: 199,
-    paddingTop: "56.25%", // 16:9
+    paddingTop: "56.25%",
     width: 128,
   },
   expand: {
@@ -53,7 +50,6 @@ const useStyles = makeStyles((theme) => ({
 const Book = ({ book, addBookToBookcase }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
-
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -76,39 +72,26 @@ const Book = ({ book, addBookToBookcase }) => {
     }
     return "No price available";
   };
-
+  console.log(book);
   return (
-    <Grid container spacing={10} className={classes.root}>
-      <Grid item xs={3} spacing={3}>
-        <Paper className={Paper.classes}>
-          {title}
+    <Grid item lg={4} md={3} xs={12} sm={3} spacing={1}>
+      <Paper align="center" fontStyle="italics" className={Paper.classes}>
+        <CardActionArea>
+          <Typography component="div">
+            <Box fontStyle="italic" fontWeight="fontWeightBold">
+              {title}
+            </Box>
+            by {authors}
+          </Typography>
+
           <Card className={classes.root}>
-            <CardHeader
-              avatar={
-                <Avatar aria-label="book-list" className={classes.avatar}>
-                  {title}
-                </Avatar>
-              }
-              action={
-                <IconButton aria-label="settings">
-                  <MoreVertIcon />
-                </IconButton>
-              }
-            />
+            <CardHeader className={classes.title}>{title}</CardHeader>
             <CardMedia
               className={classes.media}
               image={thumbnail}
               alt="book-image"
             />
-            <CardContent>
-              <Typography
-                variant="body2"
-                color="textSecondary"
-                component="span"
-              >
-                {renderAmount}
-              </Typography>
-            </CardContent>
+
             <CardActions disableSpacing>
               <IconButton
                 variant="outlined"
@@ -129,14 +112,15 @@ const Book = ({ book, addBookToBookcase }) => {
                 <ExpandMoreIcon />
               </IconButton>
             </CardActions>
+
             <Collapse in={expanded} timeout="auto" unmountOnExit>
               <CardContent>
                 <Typography paragraph>{description}</Typography>
               </CardContent>
             </Collapse>
           </Card>
-        </Paper>
-      </Grid>
+        </CardActionArea>
+      </Paper>
     </Grid>
   );
 };

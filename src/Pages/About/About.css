@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap");
+
+body {
+  color: red;
+}
+
+.about-page {
+  height: 100vh;
+  background-size: cover;
+  opacity: 0.5;
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-gap: 10px 15px;
+  padding: 2rem;
+}
+
+.about-header {
+  font-family: "Patrick Hand", cursive;
+  font-weight: 400;
+}

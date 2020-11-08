@@ -1,0 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap");
+
+body {
+  color: #ece0d1;
+}
+.home-pg-title {
+  font-family: "Patrick Hand", cursive;
+  font-weight: 400;
+  font-size: 50px;
+}
