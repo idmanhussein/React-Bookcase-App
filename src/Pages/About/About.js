@@ -19,11 +19,6 @@ const About = () => {
           bookcase. If you change your mind - no problem! Simply remove the book
           and continue exploring.
         </p>
-        <p>
-          If you're more tech-inclined and curious about the technologies used
-          in this web-app, have a look at the Github repository for this
-          project:
-        </p>
       </p>
     </div>
   );

@@ -16,7 +16,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { Grid, CardActionArea } from "@material-ui/core";
 import { Paper } from "@material-ui/core";
 import { Box } from "@material-ui/core";
-import "./Book.css";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -74,7 +74,7 @@ const Book = ({ book, addBookToBookcase }) => {
   };
   console.log(book);
   return (
-    <Grid item lg={4} md={3} xs={12} sm={3} spacing={1}>
+    <Grid item lg={4} md={3} xs={12} sm={3}>
       <Paper align="center" fontStyle="italics" className={Paper.classes}>
         <CardActionArea>
           <Typography component="div">

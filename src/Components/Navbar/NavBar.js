@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Nav, Navbar, Form } from "react-bootstrap";
+import { Nav, Navbar } from "react-bootstrap";
 import styled from "styled-components";
-import { Button } from "@material-ui/core";
+import "./Navbar.css";
+
 const Styles = styled.div`
   .navbar {
     background-color: #bbb;
@@ -23,7 +24,7 @@ const Styles = styled.div`
 export const NavBar = ({ keyword, findBooks, setKeyword }) => {
   return (
     <Styles>
-      <Navbar expand="lg" bg="light" variant="light">
+      <Navbar className="navbar" expand="lg" bg="light" variant="light">
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">

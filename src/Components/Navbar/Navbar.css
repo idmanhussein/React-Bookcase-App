@@ -1,0 +1,18 @@
+.navbar a {
+  margin: auto;
+  padding: 5px 0;
+  font-size: 17px;
+  width: 500px;
+  list-style: none;
+  text-decoration: none;
+  line-height: 50px;
+  padding: 0 10px;
+  color: #38220f;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.navbar a:hover {
+  color: orangered;
+}

@@ -1,4 +1,7 @@
 import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Button } from "react-bootstrap";
+import "./Pagination.css";
 
 const Pagination = ({ booksPerPage, totalBooks, paginate }) => {
   const pageNumbers = [];
@@ -10,9 +13,12 @@ const Pagination = ({ booksPerPage, totalBooks, paginate }) => {
       <ul className="pagination">
         {pageNumbers.map((number) => (
           <li key={number} className="page-item">
-            <a onClick={() => paginate(number)} href="#" className="page-link">
+            <Button
+              variant="outline-secondary"
+              onClick={() => paginate(number)}
+            >
               {number}
-            </a>
+            </Button>
           </li>
         ))}
       </ul>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, Fragment } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Header from "../Components/Header/Header";
 import Search from "../Components/Search/Search";
@@ -11,27 +11,13 @@ import { Layout } from "../Components/Layout/Layout";
 import NavBar from "../Components/Navbar/NavBar";
 import { Typography } from "@material-ui/core";
 
-const App = (props) => {
+const App = () => {
   const [books, setBooks] = useState(data);
   localStorage.getItem("books");
   const [keyword, setKeyword] = useState("");
   const [bookcase, setBookcase] = useState([]);
   const [currentPage, setCurrentPage] = useState([1]);
   const [booksPerPage] = useState(6);
-
-  /* useEffect(() => {
-    const findBooks = async (value) => {
-      setLoading(true);
-      const results = await fetch(
-        `https://www.googleapis.com/books/v1/volumes?q=${value}&filter=paid-ebooks&print-type=books&projection=lite`
-      ).then((res) => res.json());
-      setBooks(results.items);
-      setLoading(false);
-    };
-
-    findBooks();
-  }, []);
-*/
 
   async function findBooks(value) {
     const results = await fetch(
@@ -43,16 +29,15 @@ const App = (props) => {
   }
 
   function addBookToBookcase(title) {
-    let findBooks = books.filter((book) => title === book.volumeInfo.title);
+    let findBooks = books.find((book) => title === book.volumeInfo.title);
     setBookcase((existingBook) => existingBook.concat(findBooks));
   }
 
-  // Get current books
   const indexOfLastBook = currentPage * booksPerPage;
   const indexOfFirstBook = indexOfLastBook - booksPerPage;
   const currentBooks = books.slice(indexOfFirstBook, indexOfLastBook);
-
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <BrowserRouter>
       <Layout>
@@ -100,7 +85,7 @@ const App = (props) => {
               path="/bookcase"
               render={() => (
                 <Fragment>
-                  <NavBar />
+                  <NavBar bookcase={bookcase.length} />
                   <h1 className="bookcase-title">My Bookcase</h1>
                   <Bookcase bookcase={bookcase} setBookcase={setBookcase} />
                 </Fragment>
@@ -112,14 +97,13 @@ const App = (props) => {
               path="/search"
               render={() => (
                 <Fragment>
-                  <NavBar />
+                  <NavBar bookcase={bookcase.length} />
                   <Header />
                   <Search
                     findBooks={findBooks}
                     keyword={keyword}
                     setKeyword={setKeyword}
                   />
-                  <Bookcase bookcase={bookcase} />
                 </Fragment>
               )}
             />
@@ -129,5 +113,4 @@ const App = (props) => {
     </BrowserRouter>
   );
 };
-
 export default App;

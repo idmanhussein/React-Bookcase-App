@@ -12,7 +12,7 @@ const Bookcase = ({ bookcase, setBookcase }) => {
     <>
       {bookcase.map((item) => {
         const price = () =>
-          item.saleInfo.saleability === "FOR_SALE"
+          item.saleInfo.saleability === "forSale"
             ? "£" + item.saleInfo.listPrice.amount
             : "£0.00";
 

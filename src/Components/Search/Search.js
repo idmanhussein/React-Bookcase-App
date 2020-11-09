@@ -13,8 +13,8 @@ const Search = ({ keyword, findBooks, setKeyword }) => {
   return (
     <MDBCol md="12">
       <form onSubmit={(e) => handleSubmit(e)}>
-        <Typography variant="h6" className="form-label" align="center">
-          Find your latest read!
+        <Typography variant="body1" className="form-label" align="center">
+          Here are a few of my favourite books. Have a search for yours!
         </Typography>
         <Divider variant="middle" />
         <SearchBar
@@ -25,8 +25,10 @@ const Search = ({ keyword, findBooks, setKeyword }) => {
         />
 
         <Button
-          color="secondary"
+          className="find-button"
+          align="center"
           variant="outlined"
+          size="medium"
           type="submit"
           value="Submit"
         >
